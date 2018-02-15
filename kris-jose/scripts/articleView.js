@@ -15,8 +15,7 @@ articleView.populateFilters = function() {
 
       // DONE: Refactor this concatenation using a template literal.
       optionTag = `<option value="${authorName}">${authorName}</option>`;
-
-      if ($('#author-filter option[value="' + authorName + '"]').length === 0) {
+      if ($('#author-filter option[value="' + authorName + '"]').length === 0){
         $('#author-filter').append(optionTag);
       }
 
@@ -75,14 +74,16 @@ articleView.handleMainNav = function() {
   // TODO: Add an event handler to .main-nav elements that will power the Tabs feature.
   // Clicking any .tab element should hide all the .tab-content sections, and then reveal the single .tab-content section that is associated with the clicked .tab element.
   // So: You need to dynamically build a selector string with the correct ID, based on the data available to you on the .tab element that was clicked.
-  $('.main-nav .tab').on('click', function() {
-    let $selection = $(this).val();
+  $('.tab').on('click', function() {
+    let $selection = $(this).data('content');
     console.log($selection);
-    // if () {
-
-    // } else {
-
-    // }
+    if($selection === 'articles') {
+      $('#about').hide();
+      $('#articles').show();
+    } else if ($selection === 'about'){
+      $('#articles').hide();
+      $('#about').show();
+    }
   })
 
 
@@ -111,4 +112,5 @@ $(document).ready(function() {
   articleView.handleAuthorFilter();
   articleView.handleCategoryFilter();
   articleView.setTeasers();
+  articleView.handleMainNav();
 })
