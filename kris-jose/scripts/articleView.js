@@ -46,8 +46,8 @@ articleView.handleAuthorFilter = function() {
 
     } else {
       // DONE: If the <select> menu was changed to an option that is blank, we should first show all the articles, except the one article we are using as a template.
-      $('article[data-author=""').hide();
-
+      $('article').show();
+      $('.template').hide();
     }
     $('#category-filter').val('');
   });
@@ -64,7 +64,8 @@ articleView.handleCategoryFilter = function() {
       $('article').hide();
       $('article[data-category="' + $selection + '"]').show();
     } else {
-      $('article[data-category=""').hide();
+      $('article').show();
+      $('.template').hide();
     }
     $('#author-filter').val('');
   })
